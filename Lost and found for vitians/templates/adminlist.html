@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>List of items</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="/" style="margin-left: 2.5%; font-size:50px;">Lost and found for vitians</span>
+        </nav>
+        {% if all|length==0 %}
+        <div class="alert alert-dark" role="alert">
+          Add records
+        </div>
+        {% else %}
+        <p class="display-4" style="margin-left: 2.5%; margin-top:2.5%;">Lost items:</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Owner's name</th>
+              <th scope="col">Owner's contact</th>
+              <th scope="col">Item description</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in all %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{a.name}}</td>
+              <td>{{a.contact}}</td>
+              <td>{{a.item}}</td>
+              <td>{{a.dater}}</td>
+              <td>
+                <a href="/delete/{{a.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+    </body>
+</html>
